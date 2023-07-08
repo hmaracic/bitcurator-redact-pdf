@@ -296,7 +296,10 @@ public class RedactDialog extends JDialog {
 		log.info("in redact button handler, past the asks check");
 		List<PdfCleanUpLocation> cleanUps = this.redactLocations.stream().filter(x -> Action.Redact.equals(x.action)).map(x -> x.loc)
 				.collect(Collectors.toList());
-		PdfCleanUpTool cleaner = new PdfCleanUpTool(this.itextPDF, cleanUps);
+		PdfCleanUpTool cleaner = new PdfCleanUpTool(this.itextPDF);
+		for (PdfCleanUpLocation pdfCleanUpLocation : cleanUps) {
+			cleaner.addCleanupLocation(pdfCleanUpLocation);
+		};
 		try {
 			log.info("in redact button handler, starting cleanup");
 			cleaner.cleanUp();

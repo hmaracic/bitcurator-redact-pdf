@@ -43,10 +43,11 @@ repositories {
 
 dependencies {
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-    implementation 'com.itextpdf:kernel:7.1.2@jar'
-    implementation 'com.itextpdf:io:7.1.2@jar'
-    implementation 'com.itextpdf:layout:7.1.2@jar'
-    implementation 'com.itextpdf:cleanup:2.0.1@jar'
+    implementation 'com.itextpdf:kernel:8.0.0@jar'
+    implementation 'com.itextpdf:commons:8.0.0@jar'
+    implementation 'com.itextpdf:io:8.0.0@jar'
+    implementation 'com.itextpdf:layout:8.0.0@jar'
+    implementation 'com.itextpdf:cleanup:4.0.0@jar'
     implementation 'org.apache.commons:commons-imaging:1.0-alpha3@jar'
     implementation 'commons-io:commons-io:2.6@jar'
     implementation 'org.apache.commons:commons-collections4:4.2@jar'
