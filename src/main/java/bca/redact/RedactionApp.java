@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -1020,7 +1021,8 @@ public class RedactionApp {
 	}
 	
 	private File getOutputFile(File inputFile) {
-		File outFile = Paths.get(outPath, inputFile.getAbsolutePath()).toFile();
+		Path path = inputFile.toPath();
+		File outFile = Paths.get(outPath, path.getRoot().relativize(path).toString()).toFile();
 		return outFile;
 	}
 }
