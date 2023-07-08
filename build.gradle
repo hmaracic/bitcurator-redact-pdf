@@ -14,15 +14,20 @@ version = '1.0'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+configurations {
+  customConfig.extendsFrom implementation
+}
+
 //create a single Jar with all dependencies
 task allJar(type: Jar) {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 	manifest {
         attributes 'Implementation-Title': 'BitCurator PDF Redaction',
         	'Implementation-Version': version,
         	'Main-Class': 'bca.redact.RedactionApp'
     }
     baseName = project.name + '-all'
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    from { configurations.customConfig.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }
 
@@ -33,28 +38,28 @@ repositories {
     jcenter()
     maven { url "https://repository.apache.org/content/repositories/snapshots/" }
     maven { url "https://repo.itextsupport.com/releases" }
-    maven { url "http://repo.ghost4j.org/maven2/releases" }
+    maven { url "https://repo.ghost4j.org/maven2/releases" }
 }
 
 dependencies {
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-    compile 'com.itextpdf:kernel:7.1.2@jar'
-    compile 'com.itextpdf:io:7.1.2@jar'
-    compile 'com.itextpdf:layout:7.1.2@jar'
-    compile 'com.itextpdf:cleanup:2.0.1@jar'
-    compile 'org.apache.commons:commons-imaging:1.0-SNAPSHOT@jar'
-    compile 'commons-io:commons-io:2.6@jar'
-    compile 'org.apache.commons:commons-collections4:4.2@jar'
-    compile 'org.ghost4j:ghost4j:1.0.0@jar'
-    compile 'com.lowagie:itext:2.1.7@jar'
-    compile 'log4j:log4j:1.2.15@jar'
-    compile 'net.java.dev.jna:jna:3.3.0@jar'
-    compile 'edu.stanford.nlp:stanford-corenlp:3.9.1@jar'
-    compile group: 'edu.stanford.nlp', name: 'stanford-corenlp', version: '3.9.1', classifier: 'models'
-    compile 'org.slf4j:slf4j-log4j12:1.7.25@jar'
+    implementation 'com.itextpdf:kernel:7.1.2@jar'
+    implementation 'com.itextpdf:io:7.1.2@jar'
+    implementation 'com.itextpdf:layout:7.1.2@jar'
+    implementation 'com.itextpdf:cleanup:2.0.1@jar'
+    implementation 'org.apache.commons:commons-imaging:1.0-alpha3@jar'
+    implementation 'commons-io:commons-io:2.6@jar'
+    implementation 'org.apache.commons:commons-collections4:4.2@jar'
+    implementation 'org.ghost4j:ghost4j:1.0.0@jar'
+    implementation 'com.lowagie:itext:2.1.7@jar'
+    implementation 'log4j:log4j:1.2.15@jar'
+    implementation 'net.java.dev.jna:jna:3.3.0@jar'
+    implementation 'edu.stanford.nlp:stanford-corenlp:3.9.1@jar'
+    implementation group: 'edu.stanford.nlp', name: 'stanford-corenlp', version: '3.9.1', classifier: 'models'
+    implementation 'org.slf4j:slf4j-log4j12:1.7.25@jar'
 
     // Use JUnit test framework
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 }
 
 mainClassName = 'bca.redact.RedactionApp'
