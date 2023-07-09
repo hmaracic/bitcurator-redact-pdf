@@ -3,8 +3,6 @@ import java.util.Comparator;
 
 import com.itextpdf.pdfcleanup.PdfCleanUpLocation;
 
-import bca.redact.TextPattern;
-
 public class RedactLocation implements Comparable<RedactLocation> {
 	public int page = -1;
 	public TextPattern pattern = null;
