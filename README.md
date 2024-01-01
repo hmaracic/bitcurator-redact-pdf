@@ -6,9 +6,9 @@
 [![GitHub forks](https://img.shields.io/github/forks/bitcurator/bitcurator-redact-pdf.svg)](https://github.com/bitcurator/bitcurator-redact-pdf/network)
 [![Twitter Follow](https://img.shields.io/twitter/follow/bitcurator.svg?style=social&label=Follow)](https://twitter.com/bitcurator)
 
-# END-OF-LIFE (EOL) NOTICE 
-
-This research software has reached end-of-life. The code in this repository is no longer actively maintained or supported.
+# RELATION TO THE ORIGINAL REPO
+The original repo has been archived (made read-only) and the software declared end-of-life. When I tried using this tool, it would not build on newer versions of Java and had a bug when running on Windows.
+This fork started to bring the build system and dependencies up-to-date and resolve the windows bug, so this useful tool could continue to be used.
 
 # Overview
 
